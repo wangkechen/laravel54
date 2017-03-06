@@ -54,6 +54,11 @@ class PostsController extends Controller
 
         //方法三
 
+        $this->validate(request(),[
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
         Post::create(request(['title','body']));
 
         // And then redirect to the home page.

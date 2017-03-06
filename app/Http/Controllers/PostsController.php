@@ -9,13 +9,24 @@ class PostsController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::latest()->get();
+        return view('posts.index',compact('posts'));
     }
 
-    public function show()
+
+//等同于下面的方法
+   /* public function show($id)
     {
-        return view('posts.show');
+        $post = Post::find($id);
+        return view('posts.show',compact('post'));
+    }*/
+
+
+    public function show(Post $post)
+    {
+        return view('posts.show',compact('post'));
     }
+
 
     public function create()
     {

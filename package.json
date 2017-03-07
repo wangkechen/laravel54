@@ -13,5 +13,23 @@
     "laravel-mix": "^0.6.0",
     "lodash": "^4.16.2",
     "vue": "^2.0.1"
-  }
+  },
+  "name": "laravel5.4",
+  "description": "<p align=\"center\"><img src=\"https://laravel.com/assets/img/components/logo-laravel.svg\"></p>",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangkechen/laravel54.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangkechen/laravel54/issues"
+  },
+  "homepage": "https://github.com/wangkechen/laravel54#readme"
 }

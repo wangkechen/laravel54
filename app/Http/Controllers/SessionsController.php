@@ -21,13 +21,13 @@ class SessionsController extends Controller
     {
         // Attempt to authenticate the user.
         // If not, redirect back.
+        // If so, sign them in.
         if (! auth()->attempt(request(['email','password']))){
             return back()->withErrors([
                 'message' => 'Please check your credentials and try again.'
             ]);
         }
 
-        // If so, sign them in.
         //Redirct to the home page.
         return redirect()->home();
     }

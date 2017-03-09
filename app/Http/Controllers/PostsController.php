@@ -20,7 +20,7 @@ class PostsController extends Controller
             ->get();
 
         /*
-         * 第二种写法
+         * 第一种写法
         $posts = Post::latest();
 
         if ($month = request('month')){
@@ -34,13 +34,23 @@ class PostsController extends Controller
         $posts = $posts->get();
         */
 
-        $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
+
+        /*
+         * 第二种写法
+         $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
             ->groupBy('year','month')
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();
 
         return view('posts.index',compact('posts','archives'));
+        */
+
+
+        //调用模型里的静态方法
+        //$archives = Post::archives();
+
+        return view('posts.index',compact('posts'));
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Repositories\Posts;
 use Carbon\Carbon;
 
 class PostsController extends Controller
@@ -13,9 +14,17 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
 
-    public function index()
+    public function index(Posts $posts)
     {
-        $posts = Post::latest()
+        //依赖注入方式
+        //dd($posts);
+        //$posts = $posts->all();
+
+        //Repository方式
+        //$posts = (new \App\Repositories\Posts)->all();
+
+        //直接读取数据库方式
+         $posts = Post::latest()
             ->filter(request(['month','year']))
             ->get();
 

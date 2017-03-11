@@ -2,6 +2,8 @@
 
 namespace App;
 Use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+
 //Model继承自己的Model不是Eloquent下的,不必在每个模型中都添加保护字段
 //use Illuminate\Database\Eloquent\Model;
 
@@ -36,7 +38,8 @@ class Post extends Model
             'post_id' => $this->id
         ]);*/
         //第二种写法
-        $this->comments()->create(compact('body'));
+        $user_id = Auth::user()->id;
+        $this->comments()->create(compact('body','user_id'));
     }
 
     public function scopeFilter($query, $filters)

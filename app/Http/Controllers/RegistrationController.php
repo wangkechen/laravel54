@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Monolog\Handler\NativeMailerHandler;
+use App\Mail\Welcome;
 
 class RegistrationController extends Controller
 {
@@ -33,6 +35,9 @@ class RegistrationController extends Controller
         // Sign them in
 
         auth()->login($user);
+
+        \Mail::to($user)->send(new Welcome($user));
+
 
         // Redircet to the home page
 

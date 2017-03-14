@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 //Model继承自己的Model不是Eloquent下的,不必在每个模型中都添加保护字段
 //use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends Cmodel
 {
     //  protected $fillable = ['title','body'];
     //  protected $guarded = [];
@@ -61,6 +61,11 @@ class Post extends Model
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
 }

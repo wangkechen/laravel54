@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Repositories\Posts;
@@ -14,7 +15,8 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
 
-    public function index(Posts $posts)
+    //public function index(Posts $posts)
+    public function index()
     {
         //依赖注入方式
         //dd($posts);

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Task extends Cmodel
 {
     /*
      * public static function incomplete()

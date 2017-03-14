@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Model extends Eloquent
+class Cmodel extends Eloquent
 {
     protected $guarded = [];
 }

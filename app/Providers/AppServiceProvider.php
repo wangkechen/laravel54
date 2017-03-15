@@ -17,7 +17,17 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('layouts.sidebar', function ($view) {
+            $archives = \App\Post::archives();
+            $tags = \App\Tag::has('posts')->pluck('name');
+            $view->with(compact('archives', 'tags'));
+            /*
+             *
             $view->with('archives', \App\Post::archives());
+            //列出所有的标签
+            // $view->with('tags',\App\Tag::pluck('name'));
+            //只列出有posts的标签
+            $view->with('tags',\App\Tag::has('posts')->pluck('name'));
+            */
         });
     }
 
